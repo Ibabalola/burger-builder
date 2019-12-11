@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Aux from '../../hoc/Aux';
+import Aux from '../../hoc/Auxiliary';
 import styles from './Layout.module.css';
 
 export default ( props ) => (
