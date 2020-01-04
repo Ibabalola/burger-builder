@@ -22,6 +22,8 @@ export default props => (
                 disabled={props.disabled[ctrl.type]}
             />    
         ))}
-        <button>ORDER NOW</button>
+        <button 
+            className={styles.OrderButton}
+            disabled={!props.purchasable}>ORDER NOW</button>
     </div>
 );
