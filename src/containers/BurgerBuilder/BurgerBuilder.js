@@ -48,6 +48,10 @@ export default class BurgerBuilder extends Component {
         this.setState({purchasable: sum > 0});
     }
 
+    getTotalPrice = () => {
+        return this.state.totalPrice.toFixed(2);
+    }
+
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         const updatedCount = oldCount + 1;
@@ -110,6 +114,7 @@ export default class BurgerBuilder extends Component {
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary 
                         ingredients={this.state.ingredients} 
+                        price={this.getTotalPrice()}
                         purchaseCancelled={this.purchaseCancelHandler}
                         purchaseContinued={this.purchaseContinueHandler}/>
                 </Modal>
@@ -120,7 +125,7 @@ export default class BurgerBuilder extends Component {
                     disabled={disabledInfo}
                     purchasable={this.state.purchasable}
                     ordered={this.purchaseHandler}
-                    price={this.state.totalPrice}
+                    price={this.getTotalPrice()}
                 />
             </Aux>
         )
