@@ -4,7 +4,7 @@ import burgerLogo from '../../assets/images/burger-logo.png';
 import styles from './Logo.module.css';
 
 export default (props) => (
-    <div className={styles.Logo}>
+    <div className={styles.Logo} style={{height: props.height}}>
         <img src={burgerLogo} alt="MyBurger" />
     </div>
 );
