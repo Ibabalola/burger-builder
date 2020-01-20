@@ -14,7 +14,7 @@ export default props => {
             });
         })
         .reduce((arr, el) => {
-            console.log('arr', arr, 'element', el);
+            // console.log('arr', arr, 'element', el);
             // The concat() method is used to merge two or more arrays. 
             // This method does not change the existing arrays, but instead returns a new array.
             return arr.concat(el);
@@ -29,7 +29,7 @@ export default props => {
     }
 
     // We could have an array of empty arrays
-    console.log('transformed', transformedIngregients);
+    // console.log('transformed', transformedIngregients);
     return (
         <div className={styles.Burger}>
             <BurgerIngredient type="bread-top" />
