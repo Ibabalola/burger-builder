@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Aux from '../Auxiliary/Auxiliary';
-import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 
 import styles from './Layout.module.css';
 
@@ -25,10 +25,7 @@ export default class Layout extends Component {
         return (
             <Aux>
                 <Toolbar openSideDrawer={this.sideDrawerOpenHandler} />
-                <SideDrawer
-                    isOpen={this.state.showSideDrawer}
-                    close={this.sideDrawerCloseHandler}
-                />
+                <SideDrawer isOpen={this.state.showSideDrawer} close={this.sideDrawerCloseHandler} />
                 <main className={styles.Content}>
                     {this.props.children}
                 </main>
