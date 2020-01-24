@@ -1,9 +1,15 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
 import styles from './Burger.module.css';
 
-export default props => {
+// withRouter gives component not linked to be <Route /> access to 
+// the props added by react-router-dom
+// the path it gives the nearest match 
+export default withRouter(props => {
+    console.log('[Burger.js]', props);
+
     // Object.keys gives us an array of stings of the keys of a given object
     let transformedIngregients = Object.keys(props.ingredients)
         .map(igKey => {
@@ -37,4 +43,4 @@ export default props => {
             <BurgerIngredient type="bread-bottom" />
         </div>
     );
-};
+});

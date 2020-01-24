@@ -33,6 +33,8 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
+        console.log('[BurgerBuilder.js]', this.props);
+
         axios.get('https://react-my-burger-isb.firebaseio.com/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
@@ -109,31 +111,22 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        this.setState({ loading: true });
-
-        const order = {
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer: {
-                name: 'Isaac Babalola',
-                address: {
-                    street: 'TestStreet',
-                    postCode: 'NE7 7YH',
-                    country: 'England'
-                },
-                email: 'test@test.com'
-            },
-            deliveryMethod: 'fastest'
+        // encodeURIComponent - JS helper method encodes the object such that it can be used 
+        // in the URL. Certain characters are escaped
+        const queryParams = []; 
+        for (let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
+        queryParams.push('price=' + this.state.totalPrice);
+        const queryString = queryParams.join('&');
 
-        // Http Ajax call
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false, purchasing: false });
-            })
-            .catch(error => {
-                this.setState({ loading: false, purchasing: false });
-            });
+        console.log('[BurgerBuilder.js] - Query String', queryString);
+
+        // .history is method provided by the <Router />
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
     }
 
     render() {
