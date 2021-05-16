@@ -33,8 +33,6 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
-        console.log('[BurgerBuilder.js]', this.props);
-
         axios.get('https://react-my-burger-isb.firebaseio.com/ingredients.json')
             .then(response => {
                 this.setState({ ingredients: response.data });
@@ -119,8 +117,6 @@ class BurgerBuilder extends Component {
         }
         queryParams.push('price=' + this.state.totalPrice);
         const queryString = queryParams.join('&');
-
-        console.log('[BurgerBuilder.js] - Query String', queryString);
 
         // .history is method provided by the <Router />
         this.props.history.push({

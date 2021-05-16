@@ -12,8 +12,6 @@ export default withErrorHandler(class Orders extends Component {
     componentDidMount() {
         axios.get('/orders.json')
             .then(response => {
-                console.log('[Orders.js] - data ', response.data);
-
                 // JSON Object to Array Conversion
                 const fetchedOrders = [];
                 for (let key in response.data) {

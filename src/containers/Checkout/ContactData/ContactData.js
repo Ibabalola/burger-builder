@@ -21,8 +21,6 @@ export default class ContactData extends Component {
     orderHandler = (event) => {
         event.preventDefault();
 
-        console.log('[ContactData.js] Contact Buttons clicked', this.props.ingredients);
-
         this.setState({ loading: true });
 
         const order = {
